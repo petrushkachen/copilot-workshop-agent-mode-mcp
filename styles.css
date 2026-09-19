@@ -7,7 +7,53 @@
   --accent: #267a68;
   --accent-hover: #1d6254;
   --danger: #b24b4b;
+  --danger-hover: #fff0f0;
+  --danger-hover-text: #8f3636;
   --shadow: 0 18px 45px rgba(38, 76, 67, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #17211f;
+    --card-background: #24302d;
+    --text: #edf5f2;
+    --muted-text: #a7b8b3;
+    --border: #3c4d48;
+    --accent: #65c3a5;
+    --accent-hover: #83d8bb;
+    --danger: #f18b8b;
+    --danger-hover: #482d2d;
+    --danger-hover-text: #ffc1c1;
+    --shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+  }
+}
+
+[data-theme="light"] {
+  --background: #eef3f1;
+  --card-background: #ffffff;
+  --text: #263331;
+  --muted-text: #71807d;
+  --border: #dce6e2;
+  --accent: #267a68;
+  --accent-hover: #1d6254;
+  --danger: #b24b4b;
+  --danger-hover: #fff0f0;
+  --danger-hover-text: #8f3636;
+  --shadow: 0 18px 45px rgba(38, 76, 67, 0.12);
+}
+
+[data-theme="dark"] {
+  --background: #17211f;
+  --card-background: #24302d;
+  --text: #edf5f2;
+  --muted-text: #a7b8b3;
+  --border: #3c4d48;
+  --accent: #65c3a5;
+  --accent-hover: #83d8bb;
+  --danger: #f18b8b;
+  --danger-hover: #482d2d;
+  --danger-hover-text: #ffc1c1;
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
 }
 
 * {
@@ -20,7 +66,7 @@ body {
   padding: 32px 16px;
   display: grid;
   place-items: center;
-  background: linear-gradient(145deg, #f5f8f6 0%, var(--background) 100%);
+  background: linear-gradient(145deg, var(--card-background) 0%, var(--background) 100%);
   color: var(--text);
   font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
 }
@@ -28,7 +74,7 @@ body {
 .todo-card {
   width: min(100%, 520px);
   padding: 36px;
-  border: 1px solid rgba(220, 230, 226, 0.9);
+  border: 1px solid var(--border);
   border-radius: 20px;
   background: var(--card-background);
   box-shadow: var(--shadow);
@@ -38,12 +84,40 @@ body {
   margin-bottom: 28px;
 }
 
+.header-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
 .eyebrow {
-  margin: 0 0 8px;
+  margin: 0;
   color: var(--accent);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.12em;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.theme-toggle:hover {
+  background: var(--border);
+  color: var(--text);
 }
 
 h1 {
@@ -69,6 +143,7 @@ h1 {
   padding: 13px 15px;
   border: 1px solid var(--border);
   border-radius: 10px;
+  background: var(--card-background);
   color: var(--text);
   font: inherit;
   outline: none;
@@ -101,6 +176,26 @@ button:hover {
 
 button:active {
   transform: translateY(1px);
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.filter-button {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted-text);
+  font-size: 0.9rem;
+}
+
+.filter-button:hover,
+.filter-button.active {
+  background: var(--accent);
+  color: #fff;
 }
 
 .todo-list {
@@ -148,8 +243,8 @@ button:active {
 }
 
 .delete-button:hover {
-  background: #fff0f0;
-  color: #8f3636;
+  background: var(--danger-hover);
+  color: var(--danger-hover-text);
 }
 
 .empty-message {
