@@ -254,11 +254,32 @@ button:active {
 }
 
 .todo-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   margin-top: 24px;
   padding-top: 18px;
   border-top: 1px solid var(--border);
   color: var(--muted-text);
   font-size: 0.92rem;
+}
+
+.clear-completed-button {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--danger);
+  font-size: 0.85rem;
+}
+
+.clear-completed-button:hover {
+  background: var(--danger-hover);
+  color: var(--danger-hover-text);
+}
+
+.clear-completed-button[hidden] {
+  display: none;
 }
 
 .sr-only {
@@ -278,6 +299,7 @@ button:active {
     opacity: 0;
     transform: translateY(-4px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
