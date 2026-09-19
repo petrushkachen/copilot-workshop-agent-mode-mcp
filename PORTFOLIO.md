@@ -1,4 +1,6 @@
-﻿# 待辦清單 Web App
+﻿![工作坊完成徽章](https://img.shields.io/badge/GitHub_Copilot_實戰工作坊-已完成-1F883D?style=for-the-badge&logo=githubcopilot&logoColor=white)
+
+# 待辦清單 Web App
 
 這是一個在 GitHub Copilot 實戰工作坊中完成的待辦清單 Web App，提供簡潔的任務管理介面，讓使用者可以新增、整理、完成並保存日常待辦事項。
 
