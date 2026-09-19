@@ -6,7 +6,7 @@
 
 ## 線上展示
 
-[前往 GitHub Pages 展示](https://<你的帳號>.github.io/<你的repo名稱>/)
+[前往 GitHub Pages 展示](https://petrushkachen.github.io/copilot-workshop-agent-mode-mcp/)
 
 ## 功能
 
