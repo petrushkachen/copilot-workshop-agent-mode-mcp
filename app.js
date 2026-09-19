@@ -111,7 +111,7 @@ function renderTodos() {
   emptyMessage.textContent = currentFilter === "active"
     ? "目前沒有未完成的待辦事項。"
     : currentFilter === "completed"
-      ? "目前沒有已完成的待辦事項。"
+      ? "目前沒有已完成的待辦事項，項目可能只是被標記為未完成，並未被刪除。"
       : "還沒有任何待辦事項，新增一個吧！";
 }
 
