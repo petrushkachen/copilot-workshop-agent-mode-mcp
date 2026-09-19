@@ -8,6 +8,7 @@ const input = document.querySelector("#todo-input");
 const list = document.querySelector("#todo-list");
 const emptyMessage = document.querySelector("#empty-message");
 const remainingCount = document.querySelector("#remaining-count");
+const clearCompletedButton = document.querySelector("#clear-completed");
 const themeToggle = document.querySelector("#theme-toggle");
 const themeIcon = document.querySelector("#theme-icon");
 const themeLabel = document.querySelector("#theme-label");
@@ -100,7 +101,11 @@ function renderTodos() {
   });
 
   const incompleteTodos = todos.filter((todo) => !todo.completed).length;
+  const completedTodos = todos.filter((todo) => todo.completed).length;
   remainingCount.textContent = `未完成：${incompleteTodos} 項`;
+
+  clearCompletedButton.hidden = completedTodos === 0;
+  clearCompletedButton.setAttribute("aria-label", `清除所有 ${completedTodos} 個已完成事項`);
 
   if (filteredTodos.length > 0) {
     emptyMessage.hidden = true;
@@ -144,6 +149,23 @@ filterButtons.forEach((button) => {
   const isActive = button.dataset.filter === currentFilter;
   button.classList.toggle("active", isActive);
   button.setAttribute("aria-pressed", String(isActive));
+});
+
+clearCompletedButton.addEventListener("click", () => {
+  const completedCount = todos.filter((todo) => todo.completed).length;
+
+  if (completedCount === 0) {
+    return;
+  }
+
+  const confirmed = window.confirm(`確定要刪除 ${completedCount} 個已完成項目嗎？`);
+  if (!confirmed) {
+    return;
+  }
+
+  todos = todos.filter((todo) => !todo.completed);
+  saveTodos();
+  renderTodos();
 });
 
 form.addEventListener("submit", (event) => {
